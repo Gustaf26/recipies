@@ -9,16 +9,23 @@ const db = firebase.firestore();
 // get reference to #recipies
 const recipiesEl = document.querySelector('#recipies');
 const newRecipieForm = document.querySelector('#new-recipie');
+const newRecipieDescriptionEl = document.querySelector('#recepie_description');
+const newRecipieIngredientsEl= document.querySelector('#recepie_ingredients');
+
+//Creating a recipe
 
 const addRecipieToList = (recipie, id) => {
-	const created = moment.unix(recipie.created_at.seconds);
+	//const created = moment.unix(recipie.created_at.seconds);
 	recipiesEl.innerHTML += `
 		<li data-id="${id}">
-			${recipie.title} (${created.fromNow()})
+			${recipie.title} 
 			<button class="btn btn-danger btn-sm">Delete</button>
+			<p>${recipie.description}</p>
 		</li>
 	`;
 };
+
+// Event to felete recipe
 
 recipiesEl.addEventListener('click', e => {
 	if (e.target.tagName !== "BUTTON") {
@@ -39,12 +46,17 @@ recipiesEl.addEventListener('click', e => {
 		});
 });
 
+//Adding recipe to the database - submitting
+
 newRecipieForm.addEventListener('submit', e => {
 	// stop form from being submitted
 	e.preventDefault();
 
 	const recipie_title = newRecipieForm.recipie_title.value.trim();
-	if (recipie_title.length < 3) {
+	const recipie_description = newRecipieDescriptionEl.value.trim();
+	const recipie_ingredients = newRecipieIngredientsEl.value.trim();
+
+	if (recipie_title.length < 3 || recipie_description < 10 || recipie_ingredients < 10) {
 		return;
 	}
 
@@ -75,6 +87,8 @@ newRecipieForm.addEventListener('submit', e => {
 			console.error("Error when adding new recipie", err);
 		});
 });
+
+//Gettin from the database
 
 const getRecipies = () => {
 	document.querySelector('#recipies').innerHTML = "";
