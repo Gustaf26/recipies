@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+	<title>My recipies</title>
+
+	<link rel="stylesheet" href="../00-assets/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+	<div class="container">
+		<h1>Gustaf's Recipies</h1>
+
+		<ul id="recipies" class="mb-5">
+		</ul>
+
+		<form id="new-recipie">
+			<h2>Create a new Recipie</h2>
+
+			<div class="form-group">
+				<label for="recipie_title">Title</label>
+				<input type="text" class="form-control w-25" id="recipie_title" placeholder="Enter title of recipie" required="required">
+				<label for="recipie_title" class="my-3">Description</label>
+				<textarea class="form-control my-2 w-75" id="recepie_description" placeholder="Enter your description"></textarea>
+				<label for="recipie_ingredients" class="my-3">Ingredients</label>
+				<textarea class="form-control my-2 w-75" id="recepie_ingredients" placeholder="Enter the ingredients with amounts"></textarea>
+
+			</div>
+
+			<button type="submit" class="btn btn-success">Create</button>
+		</form>
+	</div>
+
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-firestore.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyD8C47eTaRcexc3_NQ41MLKVNfwjkkYB8Y",
+    authDomain: "recept-65be8.firebaseapp.com",
+    databaseURL: "https://recept-65be8.firebaseio.com",
+    projectId: "recept-65be8",
+    storageBucket: "recept-65be8.appspot.com",
+    messagingSenderId: "606404202569",
+    appId: "1:606404202569:web:eca4efe2ecb85db0efef98"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+</script>
+
+	<script src="moment.js"></script>
+	<script src="app.js"></script>
+</body>
+</html>
