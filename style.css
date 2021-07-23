@@ -1,93 +1,134 @@
 body {
-	background-image: url("images/salad.jpg");
-	line-height: 1.5;
+  background-image: url("images/salad.jpg");
+  line-height: 1.5;
 }
 
-.textos {padding-top:3rem;
-	color:whitesmoke;
-	min-height:480px;
-	font-size: 1.5em;}
-
-
-h1, h2, h3, h4, h5, h6 {
-	margin-top: 0.5em;
-	margin-bottom: 0.75em;
+.textos {
+  padding-top: 3rem;
+  color: whitesmoke;
+  min-height: 480px;
+  font-size: 1.5em;
 }
 
-h4 {color:rgb(197, 164, 103);}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 0.5em;
+  margin-bottom: 0.75em;
+}
 
-h1{padding:1rem;}
-h2{padding-top: 2rem;}
+h4 {
+  color: rgb(197, 164, 103);
+}
 
-.navigation{display:flex;
-	justify-content: space-evenly;
-	flex-wrap: wrap;}
+h1 {
+  padding: 1rem;
+}
+h2 {
+  padding-top: 2rem;
+}
 
-#familia{border-radius: 50%;
-	width: 180px; 
-	margin-top: 10px;
-	margin-bottom: 10px;
-	border:2px solid whitesmoke;}
+.navigation {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
 
-.loginform{padding-bottom: 3rem;
-	color:whitesmoke;}
+#familia {
+  border-radius: 50%;
+  width: 180px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border: 2px solid whitesmoke;
+}
+
+#dropdownMenuButton {
+  background-color: darkgray;
+  color: white;
+  padding: 0.5rem;
+}
+
+.loginform {
+  padding-bottom: 3rem;
+  color: whitesmoke;
+}
 
 ul {
-	border: 1px solid #888;
-	list-style-type: square;
-	padding: 0.5rem 1rem;
-	margin-bottom: 1.5rem;
+  border: 1px solid #888;
+  list-style-type: square;
+  padding: 0.5rem 1rem;
+  margin-bottom: 1.5rem;
 }
 
 li {
-	margin-top: 0.5rem;
-	margin-bottom: 0.5rem;
-	margin-left: 1rem;
-	padding-left: 0.25rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  margin-left: 1rem;
+  padding-left: 0.25rem;
 }
 
-.tituloautor{display:flex;
-	justify-content: flex-start;}
+.tituloautor {
+  display: flex;
+  justify-content: flex-start;
+}
 
-.autoresrecetas li {color:whitesmoke;}
+.autoresrecetas li {
+  color: whitesmoke;
+}
 
-label {color:whitesmoke;}
+label {
+  color: whitesmoke;
+}
 
-.card{width: 40rem;
-	padding-left:1rem;
-	padding-bottom: 1rem;
-	background: rgb(95, 72, 41);;
-	color:whitesmoke;
-	border:2px dotted white;}
+.card {
+  width: 40rem;
+  padding-left: 1rem;
+  padding-bottom: 1rem;
+  background: rgb(95, 72, 41);
+  color: whitesmoke;
+  border: 2px dotted white;
+}
 
-#prep, #prepTwo, #prepThree {display:inline-block;}
+#prep,
+#prepTwo,
+#prepThree {
+  display: inline-block;
+}
 
 /*#recipies, #recipiestwo, #recipiesthree {display:none;}*/
 
-footer {min-height: 3rem;
-	padding-top:1rem;
-	padding-bottom: 1rem;
-	text-align: center;
-	background-color: black;
-	color: whitesmoke;}
-
-
-@media screen and (max-width:1000px) {
-
-h2{text-align: center;}
-
-.forma {display:flex;
-flex-direction: column;
-align-items: center;}
-
+footer {
+  min-height: 3rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  text-align: center;
+  background-color: black;
+  color: whitesmoke;
 }
 
-@media screen and (min-width:1001px) and (max-width:1600px){
-	
-.forma {display:flex;
-	flex-direction: column;
-	align-items: flex-start;}
+@media screen and (max-width: 1000px) {
+  h2 {
+    text-align: center;
+  }
 
-.loggainbutton{margin-left: 1rem;
-	}
+  .forma {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media screen and (min-width: 1001px) and (max-width: 1600px) {
+  .forma {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .loggainbutton {
+    margin-left: 1rem;
+  }
 }
