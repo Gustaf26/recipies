@@ -10,7 +10,7 @@ const recipiesEl = document.querySelector("#recipies");
 const newRecipieForm = document.querySelector("#new-recipie");
 const newRecipieDescriptionEl = document.querySelector("#recepie_description");
 const newRecipieIngredientsEl = document.querySelector("#recepie_ingredients");
-const dropdownEl = document.querySelector(".dropdown");
+const dropdownEl = document.querySelector("dropdown");
 const newRecipiePreparacionEl = document.querySelector("#recepie_preparacion");
 
 dropdownEl.value = "";
