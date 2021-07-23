@@ -1,13 +1,36 @@
 body {
-	background-image: linear-gradient(to left, rgb(243, 204, 154), rgb(94, 68, 30));
-	color: #f6f6f6;
+	background-image: url("images/salad.jpg");
 	line-height: 1.5;
 }
+
+.textos {padding-top:3rem;
+	color:whitesmoke;
+	min-height:480px;
+	font-size: 1.5em;}
+
 
 h1, h2, h3, h4, h5, h6 {
 	margin-top: 0.5em;
 	margin-bottom: 0.75em;
 }
+
+h4 {color:rgb(197, 164, 103);}
+
+h1{padding:1rem;}
+h2{padding-top: 2rem;}
+
+.navigation{display:flex;
+	justify-content: space-evenly;
+	flex-wrap: wrap;}
+
+#familia{border-radius: 50%;
+	width: 180px; 
+	margin-top: 10px;
+	margin-bottom: 10px;
+	border:2px solid whitesmoke;}
+
+.loginform{padding-bottom: 3rem;
+	color:whitesmoke;}
 
 ul {
 	border: 1px solid #888;
@@ -23,4 +46,48 @@ li {
 	padding-left: 0.25rem;
 }
 
+.tituloautor{display:flex;
+	justify-content: flex-start;}
 
+.autoresrecetas li {color:whitesmoke;}
+
+label {color:whitesmoke;}
+
+.card{width: 40rem;
+	padding-left:1rem;
+	padding-bottom: 1rem;
+	background: rgb(95, 72, 41);;
+	color:whitesmoke;
+	border:2px dotted white;}
+
+#prep, #prepTwo, #prepThree {display:inline-block;}
+
+/*#recipies, #recipiestwo, #recipiesthree {display:none;}*/
+
+footer {min-height: 3rem;
+	padding-top:1rem;
+	padding-bottom: 1rem;
+	text-align: center;
+	background-color: black;
+	color: whitesmoke;}
+
+
+@media screen and (max-width:1000px) {
+
+h2{text-align: center;}
+
+.forma {display:flex;
+flex-direction: column;
+align-items: center;}
+
+}
+
+@media screen and (min-width:1001px) and (max-width:1600px){
+	
+.forma {display:flex;
+	flex-direction: column;
+	align-items: flex-start;}
+
+.loggainbutton{margin-left: 1rem;
+	}
+}

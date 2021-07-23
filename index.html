@@ -12,33 +12,102 @@
 </head>
 
 <body>
-	<div class="container">
-		<h1>My Grandma´s Recipies</h1>
+	  <nav class="navbar navbar-expand navbar-light bg-light navigation">
+		<a href="#" class="brand-logo">
+			<img src="images/familia.jpg" id="familia">
+		  </a>
+		  <em><h1>Recetas de la familia</h1></em>
+		<div id="navbarNav" class="mb-3">
+		  <ul class="navbar-nav">
+			<li class="nav-item active signin">
+			  <a class="nav-link" href="#">Sign in <span class="sr-only">(current)</span></a>
+			</li>
+			<li class="nav-item active signout" hidden>
+				<a class="nav-link" href="#">Sign out <span class="sr-only">(current)</span></a>
+			  </li>
+			<li class="nav-item">
+			  <a class="nav-link" href="#">Features</a>
+			</li>
+		  </ul>
+		</div>
+	  </nav>
 
-		<ul id="recipies" class="mb-5">
-		</ul>
+	  <section class="container loginform" hidden>
+		<form class="row forma">
+			<h2 class="col-sm-12 col-lg-10">Entra en la pagina</h2>
+			<div class="form-group col-sm-12 col-lg-8">
+			<label for="InputEmail">Correo electronico</label>
+			<input type="email" class="form-control" id="InputEmail" aria-describedby="emailHelp">
+			<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+			</div>
+			<div class="form-group col-sm-12 col-lg-8">
+			<label for="InputPassword">Contraseña</label>
+			<input type="password" class="form-control" id="InputPassword">
+			</div>
+			<button type="submit" class="col-sm-4 col-lg-3 btn btn-secondary mt-4 loggainbutton">Acceder</button>
+		</form>
+	</section>
+
+	<div class="container autoresrecetas" hidden>
+		<div id="autores">
+			<h3>Mira una receta ...</h3>
+			<h4 id="lela">Recetas de Lela (pincha para ver)</h4>
+			<ul id="recipies" class="mb-5" hidden>
+			</ul>
+			<h4 id="papa">Recetas de papá (pincha para ver)</h4>
+			<ul id="recipiestwo" class="mb-5" hidden>
+			</ul>
+			<h4 id="suecas">Recetas suecas (pincha para ver)</h4>
+			<ul id="recipiesthree" class="mb-5" hidden>
+			</ul>
+		</div>
 
 		<form id="new-recipie">
-			<h2>Create a new Recipie</h2>
+			<h3>...o aporta con una que conozcas</h3>
 
 			<div class="form-group">
-				<label for="recipie_title">Title</label>
-				<input type="text" class="form-control w-25" id="recipie_title" placeholder="Enter title of recipie" required="required">
-				<label for="recipie_title" class="my-3">Description</label>
-				<textarea class="form-control my-2 w-75" id="recepie_description" placeholder="Enter your description"></textarea>
-				<label for="recipie_ingredients" class="my-3">Ingredients</label>
-				<textarea class="form-control my-2 w-75" id="recepie_ingredients" placeholder="Enter the ingredients with amounts"></textarea>
+				<div class="tituloautor">
+					<label class="tituloautoritem mr-4" for="recipie_title">Plato</label>
+					<input class="tituloautoritem  mr-4" type="text" class="form-control w-25" id="recipie_title" placeholder="Enter title of recipie" required="required">
+					<div class="tituloautoritem  mr-4" class="dropdown">
+						<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Categoría
+						</button>
+						<div class="dropdown-menu dropdown" aria-labelledby="dropdownMenuButton">
+						<a class="dropdown-item" id="lel" href="#">Lela</a>
+						<a class="dropdown-item" id="pap" href="#">Papá</a>
+						<a class="dropdown-item" id="sue" href="#">Sueca</a>
+						</div>
+					</div>
+				</div>
+				<label for="recipie_title" class="my-3">Descripcion breve</label>
+				<textarea class="form-control my-2 w-75" id="recepie_description" placeholder="Una descripción corta"></textarea>
+				<label for="recipie_ingredients" class="my-3">Ingredientes</label>
+				<textarea class="form-control my-2 w-75" id="recepie_ingredients" placeholder="Escribe los ingredientes"></textarea>
+				<label for="recipie_preparacion" class="my-3">Modo de preparación</label>
+				<textarea class="form-control my-2 w-75" id="recepie_preparacion" placeholder="Escribe el modo de preparación"></textarea>
 
 			</div>
 
-			<button type="submit" class="btn btn-success">Create</button>
+			<button type="submit" class="btn btn-success mb-3">Envía</button>
 		</form>
 	</div>
+	<div class="container textos">
+		<p><em>"Cada mochuelino a su olivino"</em></p>
+		<p><em>"Bandido!"</em></p>
+		<p><em>"Riddaren kring det runda bordet ..."</em></p>
+	</div>
+	<footer>Imagen de Дарья Яковлева en Pixabay</footer>
+	
 
 <!-- The core Firebase JS SDK is always required and must be listed first -->
-<script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-firestore.js"></script>
 
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
 
 <script>
   // Your web app's Firebase configuration
@@ -53,9 +122,20 @@
   };
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
-</script>
 
+  //Auth reference
+  const auth = firebase.auth();
+  const db = firebase.firestore();
+
+</script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 	<script src="moment.js"></script>
+	<script src="auth.js"></script>
 	<script src="app.js"></script>
+	<script src="apptwo.js"></script>
+	<script src="appthree.js"></script>
+	
 </body>
 </html>
