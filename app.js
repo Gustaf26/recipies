@@ -147,11 +147,11 @@ dropdownEl.addEventListener("click", (e) => {
   e.preventDefault();
 
   if (e.target.id == "lel") {
-    dropdownEl.value = "Lela";
+    dropdownEl.innerText = "Lela";
   } else if (e.target.id == "pap") {
-    dropdownEl.value = "Papa";
+    dropdownEl.innerText = "Papa";
   } else if (e.target.id == "sue") {
-    dropdownEl.value = "Sueca";
+    dropdownEl.innerText = "Sueca";
   }
 });
 
