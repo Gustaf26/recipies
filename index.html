@@ -97,21 +97,24 @@
               required="required"
             />
 
-            <select
-              class="dropdown"
-              id="dropdownMenuButton"
-              style="
-                background-color: darkgray;
-                color: white;
-                border-radius: 5px;
-                padding: 0.5rem;
-              "
-            >
-              <option class="dropdown-item" selected href="#">Categoria</option>
-              <option class="dropdown-item" id="lel" href="#">Lela</option>
-              <option class="dropdown-item" id="pap" href="#">Papá</option>
-              <option class="dropdown-item" id="sue" href="#">Sueca</option>
-            </select>
+            <div class="dropdown">
+              <button
+                id="dropdownMenuButton"
+                aria-expanded="false"
+                aria-haspopup="true"
+                role="button"
+                data-toggle="dropdown"
+                class="dropdown-toggle btn btn-secondary"
+                href="#"
+              >
+                Categorias
+              </button>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" id="lel" href="#">Lela</a>
+                <a class="dropdown-item" id="pap" href="#">Papá</a>
+                <a class="dropdown-item" id="sue" href="#">Sueca</a>
+              </div>
+            </div>
           </div>
           <label for="recipie_title" class="my-3">Descripcion breve</label>
           <textarea

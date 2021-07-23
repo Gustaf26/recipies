@@ -10,7 +10,8 @@ const recipiesEl = document.querySelector("#recipies");
 const newRecipieForm = document.querySelector("#new-recipie");
 const newRecipieDescriptionEl = document.querySelector("#recepie_description");
 const newRecipieIngredientsEl = document.querySelector("#recepie_ingredients");
-const dropdownEl = document.querySelector("dropdown");
+const dropdownEl = document.getElementsByClassName("dropdown-item");
+const dropButton = document.getElementById("dropdownMenuButton");
 const newRecipiePreparacionEl = document.querySelector("#recepie_preparacion");
 
 dropdownEl.value = "";
@@ -146,13 +147,15 @@ recipiesEl.addEventListener("click", (e) => {
 dropdownEl.addEventListener("click", (e) => {
   e.preventDefault();
 
-  if (e.target.id == "lel") {
-    dropdownEl.innerText = "Lela";
-  } else if (e.target.id == "pap") {
-    dropdownEl.innerText = "Papa";
-  } else if (e.target.id == "sue") {
-    dropdownEl.innerText = "Sueca";
-  }
+  dropButton.innerText = e.target.value;
+
+  //   if (e.target.id === "lel") {
+  //     dropButton.innerText = "Lela";
+  //   } else if (e.target.id === "pap") {
+  //     dropButton.innerText = "Papa";
+  //   } else if (e.target.id === "sue") {
+  //     dropButton.innerText = "Sueca";
+  //   }
 });
 
 //Adding recipe to the database - submitting
