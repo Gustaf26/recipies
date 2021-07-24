@@ -34,7 +34,7 @@ signinEl.addEventListener("click", (e) => {
       .signOut()
       .then(() => {
         signinEl.innerText = "Sign in";
-        textosEl.toggleAttribute("hidden");
+        textosEl.style.visibility = "visible";
         receptcontainerEl.toggleAttribute("hidden");
         console.log("user successfully logged out");
       })
@@ -43,6 +43,7 @@ signinEl.addEventListener("click", (e) => {
       });
   } else {
     formaEl.toggleAttribute("hidden");
+    textosEl.style.visibility = "hidden";
   }
 });
 
