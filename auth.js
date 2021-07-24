@@ -30,11 +30,17 @@ auth.onAuthStateChanged((user) => {
 signinEl.addEventListener("click", (e) => {
   e.preventDefault();
   if (signinEl.innerText === "Sign out") {
-    auth.signOut().then(() => {
-      signinEl.innerText = "Sign in";
-      textosEl.toggleAttribute("hidden");
-      receptcontainerEl.toggleAttribute("hidden");
-    });
+    auth
+      .signOut()
+      .then(() => {
+        signinEl.innerText = "Sign in";
+        textosEl.toggleAttribute("hidden");
+        receptcontainerEl.toggleAttribute("hidden");
+        console.log("user successfully logged out");
+      })
+      .catch((err) => {
+        alert(err);
+      });
   } else {
     formaEl.toggleAttribute("hidden");
   }
