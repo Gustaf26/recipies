@@ -33,8 +33,7 @@ signinEl.addEventListener("click", (e) => {
     auth.signOut().then(() => {
       signinEl.innerText = "Sign in";
       textosEl.toggleAttribute("hidden");
-      //   signoutEl.toggleAttribute("hidden");
-      alert("You have succesfully logged out");
+      receptcontainerEl.toggleAttribute("hidden");
     });
   } else {
     formaEl.toggleAttribute("hidden");
@@ -60,15 +59,3 @@ loggainEl.addEventListener("click", (e) => {
       alert(err);
     });
 });
-
-// signoutEl.addEventListener("click", (e) => {
-//   //formaEl.toggleAttribute("hidden");
-//   receptcontainerEl.toggleAttribute("hidden");
-
-//   auth.signOut().then(() => {
-//     signinEl.toggleAttribute("hidden");
-//     textosEl.toggleAttribute("hidden");
-//     signoutEl.toggleAttribute("hidden");
-//     alert("You have succesfully logged out");
-//   });
-// });
