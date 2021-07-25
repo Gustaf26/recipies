@@ -103,8 +103,7 @@ class AllRecipies {
 								<h5 class="card-title">Preparación</h5>
 								<a href="#" id="borrar${i}">Pincha para borrar</a>
 								<p class="card-text">${recipie_data.preparacion}</p>
-							</div>
-
+						</div>
 					 </li>
 				 `;
 
@@ -129,7 +128,7 @@ class Recipie {
   }
 }
 
-// Event to felete recipe
+// Event to delete a recipe
 
 recipiesEl.addEventListener("click", (e) => {
   if (e.target.tagName !== "BUTTON") {
@@ -161,11 +160,14 @@ newRecipieForm.addEventListener("submit", (e) => {
   const recipie_ingredients = newRecipieIngredientsEl.value.trim();
   const recipie_preparacion = newRecipiePreparacionEl.value.trim();
 
-  if (
-    recipie_title.length < 3 ||
-    recipie_description < 10 ||
-    recipie_ingredients < 10
-  ) {
+  if (recipie_title.length < 3) {
+    alert("Tienes que meter un titulo más largo");
+    return;
+  } else if (recipie_description.length < 10) {
+    alert("Tienes que meter ua descripcion más larga");
+    return;
+  } else if (recipie_ingredients.length < 10) {
+    alert("Tienes que meter ua descripcion más larga");
     return;
   }
 
@@ -176,17 +178,15 @@ newRecipieForm.addEventListener("submit", (e) => {
     recipie_preparacion
   );
 
-  if (dropdownEl.value == "Lela") {
+  if (dropButton.innerText == "Lela") {
     recipies.addToDb(recipie);
-  } else if (dropdownEl.value == "Papa") {
+  } else if (dropButton.innerText == "Papa") {
     recipiesTwo.addToDbTwo(recipie);
-  } else if (dropdownEl.value == "Sueca") {
+  } else if (dropButton.innerText == "Sueca") {
     recipiesThree.addToDbThree(recipie);
   } else {
-    alert("Elige entre Lela y papa");
+    alert("Elige entre Lela, papa o sueca");
   }
-
-  //recipies.addToDb(recipie);
 
   // clear form fields
   newRecipieForm.reset();

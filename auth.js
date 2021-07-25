@@ -20,6 +20,7 @@ auth.onAuthStateChanged((user) => {
   if (user) {
     receptcontainerEl.toggleAttribute("hidden");
     textosEl.toggleAttribute("hidden");
+    signinEl.innerText = "Sign out";
 
     recipies.getRecipies();
     recipiesTwo.getRecipiesTwo();
