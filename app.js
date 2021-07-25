@@ -180,7 +180,7 @@ newRecipieForm.addEventListener("submit", (e) => {
 
   if (dropButton.innerText == "Lela") {
     recipies.addToDb(recipie);
-  } else if (dropButton.innerText == "Papa") {
+  } else if (dropButton.innerText == "Papá") {
     recipiesTwo.addToDbTwo(recipie);
   } else if (dropButton.innerText == "Sueca") {
     recipiesThree.addToDbThree(recipie);
