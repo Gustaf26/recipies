@@ -73,6 +73,7 @@ class AllRecipiesTwo {
 						 ${recipie_data.title} 
 						 <button class="btn btn-danger btn-sm">Delete</button>
 						 <p id="${doc.id}">${recipie_data.description}</p>
+             <p id="${doc.id}-ingredientes">${recipie_data.ingredients}</p>
 						 <a id="prep${i}" href="#">Ver preparación
 						</a> 
   							<div class="card" id="preparacion${i}" hidden>

@@ -14,7 +14,6 @@ h1,
 h2,
 h3,
 h4,
-h5,
 h6 {
   margin-top: 0.5em;
   margin-bottom: 0.75em;
@@ -86,8 +85,7 @@ label {
 
 .card {
   width: 40rem;
-  padding-left: 1rem;
-  padding-bottom: 1rem;
+  padding: 0.75rem;
   background: rgb(95, 72, 41);
   color: whitesmoke;
   border: 2px dotted white;
