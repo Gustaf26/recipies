@@ -49,7 +49,7 @@ class AllRecipies {
   identifyAndDeletRecipie = (Id) => {
     //	this.list.forEach(recipie=>{if(recipie.id == Id){recipies.list.pop(recipie)}})
 
-    db.collection("recipies")
+    db.collection("Lela")
       .doc(Id)
       .delete()
       .then(this.getRecipies())
@@ -60,7 +60,7 @@ class AllRecipies {
 
   addToDb = (recipie) =>
     db
-      .collection("recipies")
+      .collection("Lela")
       .add({
         description: recipie.description,
         ingredients: recipie.ingredients,
@@ -81,10 +81,14 @@ class AllRecipies {
         console.error("Error when adding new recipie", err);
       });
 
+  editRecipie = (id) => {
+    alert(id);
+  };
+
   getRecipies = () => {
     document.querySelector("#recipies").innerHTML = "";
 
-    db.collection("recipies")
+    db.collection("lela")
       .get()
       .then((snapshot) => {
         let i = snapshot.docs.length + 5;
@@ -96,13 +100,14 @@ class AllRecipies {
 					 <li data-id="${doc.id}">
 						 ${recipie_data.title} 
 						 <button class="btn btn-danger btn-sm">Delete</button>
+              <button class="btn btn-primary btn-sm">Edit</button>
 						 <p id="${doc.id}-descripcion">${recipie_data.description}</p>
              <p id="${doc.id}-ingredientes">Ingredientes: ${recipie_data.ingredients}</p>
 						 <a id="prep${i}" href="#">Ver preparación
 						</a> 
 						<div class="card" id="preparacion${i}" hidden>
 								<h5 class="card-title">Preparación</h5>
-								<a href="#" id="borrar${i}">Pincha para borrar</a>
+								<a href="#" id="borrar${i}">Pincha para ocultar</a>
 								<p class="card-text">${recipie_data.preparacion}</p>
 						</div>
 					 </li>
