@@ -82,9 +82,40 @@ class AllRecipies {
         console.error("Error when adding new recipie", err);
       });
 
-  editRecipie = (e, id) => {
+  submitRecipie = (e, id) => {
     e.preventDefault();
-    console.log(id);
+    console.log("Submitting recipie" + id);
+  };
+
+  editRecipie = (e, recipie) => {
+    e.preventDefault();
+    console.log(recipie.id);
+
+    let recipieData = recipie.data();
+
+    if (
+      (document.getElementById(`non-editing-${recipie.id}`).style.display =
+        "block")
+    ) {
+      document.getElementById(`non-editing-${recipie.id}`).style.display =
+        "none";
+      document.getElementById(`recipie-edition-${recipie.id}`).style.display =
+        "block";
+    } else {
+      document.getElementById(`non-editing-${recipie.id}`).style.display =
+        "block";
+      document.getElementById(`recipie-edition-${recipie.id}`).style.display =
+        "none";
+    }
+
+    document.getElementById(`recipie_title-${recipie.id}`).value =
+      recipieData.title;
+    document.getElementById(`recipie_description-${recipie.id}`).value =
+      recipieData.description;
+    document.getElementById(`recipie_ingredients-${recipie.id}`).value =
+      recipieData.ingredients;
+    document.getElementById(`recipie_preparacion-${recipie.id}`).value =
+      recipieData.preparacion;
   };
 
   getRecipies = () => {
@@ -104,17 +135,56 @@ class AllRecipies {
           recipiesEl.innerHTML += `
 					 <li data-id="${doc.id}">
 						 ${recipie_data.title} 
-						 <button id="delete-recipie-${doc.id}" class="btn btn-danger btn-sm">Delete</button>
+              <button id="delete-recipie-${doc.id}" class="btn btn-danger btn-sm">Delete</button>
               <button id="edit-recipie-${doc.id}" class="btn btn-primary btn-sm">Edit</button>
-						 <p id="${doc.id}-descripcion">${recipie_data.description}</p>
-             <p id="${doc.id}-ingredientes">Ingredientes: ${recipie_data.ingredients}</p>
-						 <a id="prep${i}" href="#">Ver preparación
-						</a> 
-						<div class="card" id="preparacion${i}" hidden>
-								<h5 class="card-title">Preparación</h5>
-								<a href="#" id="borrar${i}">Pincha para ocultar</a>
-								<p class="card-text">${recipie_data.preparacion}</p>
-						</div>
+              <div id="non-editing-${doc.id}">
+                <p id="${doc.id}-descripcion">${recipie_data.description}</p>
+                <p id="${doc.id}-ingredientes">Ingredientes: ${recipie_data.ingredients}</p>
+                <a id="prep${i}" href="#">Ver preparación
+                </a> 
+                <div class="card" id="preparacion${i}" hidden>
+                    <h5 class="card-title">Preparación</h5>
+                    <a href="#" id="borrar${i}">Pincha para ocultar</a>
+                    <p class="card-text">${recipie_data.preparacion}</p>
+                </div>
+              </div>
+              <form id="recipie-edition-${doc.id}" style="display: none;">
+                <div class="form-group mt-3">
+                  <div class="tituloautor">
+                    <label class="tituloautoritem mr-4" for="recipie_title"
+                      >Plato</label>
+                    <input
+                      class="tituloautoritem mr-4"
+                      type="text"
+                      class="form-control w-25"
+                      id="recipie_title-${doc.id}"
+                      placeholder="Escribe un título"
+                      required="required"
+                    />
+                  </div>
+                  <label for="recipie_title" class="my-3">Descripcion breve</label>
+                  <textarea
+                    class="form-control my-2 w-75"
+                    id="recipie_description-${doc.id}"
+                    placeholder="Una descripción corta"
+                  ></textarea>
+                  <label for="recipie_ingredients" class="my-3">Ingredientes</label>
+                  <textarea
+                    class="form-control my-2 w-75"
+                    id="recipie_ingredients-${doc.id}"
+                    placeholder="Escribe los ingredientes"
+                  ></textarea>
+                  <label for="recipie_preparacion" class="my-3"
+                    >Modo de preparación</label
+                  >
+                  <textarea
+                    class="form-control my-2 w-75"
+                    id="recipie_preparacion-${doc.id}"
+                    placeholder="Escribe el modo de preparación"
+                  ></textarea>
+                </div>
+                <button id="submit-recipie-${doc.id}" type="submit" class="btn btn-success mb-3">Envía</button>
+              </form>
 					 </li>
 				 `;
 
@@ -126,12 +196,17 @@ class AllRecipies {
           document
             .getElementById(`edit-recipie-${recipie.id}`)
             .addEventListener("click", (e) => {
-              this.editRecipie(e, recipie.id);
+              this.editRecipie(e, recipie);
             });
           document
             .getElementById(`delete-recipie-${recipie.id}`)
             .addEventListener("click", (e) => {
               this.deleteRecipie(e, recipie.id);
+            });
+          document
+            .getElementById(`submit-recipie-${recipie.id}`)
+            .addEventListener("click", (e) => {
+              this.submitRecipie(e, recipie.id);
             });
         });
       })
@@ -152,21 +227,6 @@ class Recipie {
     this.preparacion = preparacion;
   }
 }
-
-// Event to delete a recipe
-
-// recipiesEl.addEventListener("click", (e) => {
-//   if (e.target.tagName !== "BUTTON") {
-//     return;
-//   }
-
-//   // ok, we know the click happend on a button in our recipie list
-//   // now, find out which recipie
-//   const listItemEl = e.target.parentElement;
-//   const dataId = listItemEl.getAttribute("data-id");
-//   e.target.parentElement.remove();
-//   recipies.identifyAndDeletRecipie(dataId);
-// });
 
 dropdownEl.addEventListener("click", (e) => {
   e.preventDefault();
