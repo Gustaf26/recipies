@@ -72,7 +72,6 @@ li {
 
 .tituloautor {
   display: flex;
-  justify-content: flex-start;
 }
 
 .autoresrecetas li {
@@ -84,7 +83,6 @@ label {
 }
 
 .card {
-  width: 40rem;
   padding: 0.75rem;
   background: rgb(95, 72, 41);
   color: whitesmoke;
@@ -108,15 +106,32 @@ footer {
   color: whitesmoke;
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 500px) {
   h2 {
     text-align: center;
+  }
+
+  h4 {
+    font-size: large;
   }
 
   .forma {
     display: flex;
     flex-direction: column;
     align-items: center;
+  }
+
+  .card {
+    max-width: 95%;
+  }
+
+  .tituloautor {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .dropdown {
+    margin-top: 1rem;
   }
 }
 
@@ -129,5 +144,13 @@ footer {
 
   .loggainbutton {
     margin-left: 1rem;
+  }
+
+  .tituloautor {
+    justify-content: flex-start;
+  }
+
+  .card {
+    width: 40rem;
   }
 }
