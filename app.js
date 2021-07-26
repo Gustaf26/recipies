@@ -46,11 +46,12 @@ class AllRecipies {
     this.list = [];
   }
 
-  identifyAndDeletRecipie = (Id) => {
-    //	this.list.forEach(recipie=>{if(recipie.id == Id){recipies.list.pop(recipie)}})
-
+  deleteRecipie = (e, id) => {
+    e.preventDefault();
+    console.log(id);
+    return;
     db.collection("Lela")
-      .doc(Id)
+      .doc(id)
       .delete()
       .then(this.getRecipies())
       .catch((err) => {
@@ -81,12 +82,15 @@ class AllRecipies {
         console.error("Error when adding new recipie", err);
       });
 
-  editRecipie = (id) => {
-    alert(id);
+  editRecipie = (e, id) => {
+    e.preventDefault();
+    console.log(id);
   };
 
   getRecipies = () => {
     document.querySelector("#recipies").innerHTML = "";
+
+    let recipies;
 
     db.collection("lela")
       .get()
@@ -94,13 +98,14 @@ class AllRecipies {
         let i = snapshot.docs.length + 5;
         f = i;
         // loop over the documents in the snapshot
+        recipies = snapshot.docs;
         snapshot.docs.forEach((doc) => {
           const recipie_data = doc.data();
           recipiesEl.innerHTML += `
 					 <li data-id="${doc.id}">
 						 ${recipie_data.title} 
-						 <button class="btn btn-danger btn-sm">Delete</button>
-              <button class="btn btn-primary btn-sm">Edit</button>
+						 <button id="delete-recipie-${doc.id}" class="btn btn-danger btn-sm">Delete</button>
+              <button id="edit-recipie-${doc.id}" class="btn btn-primary btn-sm">Edit</button>
 						 <p id="${doc.id}-descripcion">${recipie_data.description}</p>
              <p id="${doc.id}-ingredientes">Ingredientes: ${recipie_data.ingredients}</p>
 						 <a id="prep${i}" href="#">Ver preparación
@@ -114,6 +119,20 @@ class AllRecipies {
 				 `;
 
           i = i - 1;
+        });
+      })
+      .then(() => {
+        recipies.map((recipie) => {
+          document
+            .getElementById(`edit-recipie-${recipie.id}`)
+            .addEventListener("click", (e) => {
+              this.editRecipie(e, recipie.id);
+            });
+          document
+            .getElementById(`delete-recipie-${recipie.id}`)
+            .addEventListener("click", (e) => {
+              this.deleteRecipie(e, recipie.id);
+            });
         });
       })
       .catch((err) => {
@@ -136,18 +155,18 @@ class Recipie {
 
 // Event to delete a recipe
 
-recipiesEl.addEventListener("click", (e) => {
-  if (e.target.tagName !== "BUTTON") {
-    return;
-  }
+// recipiesEl.addEventListener("click", (e) => {
+//   if (e.target.tagName !== "BUTTON") {
+//     return;
+//   }
 
-  // ok, we know the click happend on a button in our recipie list
-  // now, find out which recipie
-  const listItemEl = e.target.parentElement;
-  const dataId = listItemEl.getAttribute("data-id");
-  e.target.parentElement.remove();
-  recipies.identifyAndDeletRecipie(dataId);
-});
+//   // ok, we know the click happend on a button in our recipie list
+//   // now, find out which recipie
+//   const listItemEl = e.target.parentElement;
+//   const dataId = listItemEl.getAttribute("data-id");
+//   e.target.parentElement.remove();
+//   recipies.identifyAndDeletRecipie(dataId);
+// });
 
 dropdownEl.addEventListener("click", (e) => {
   e.preventDefault();
