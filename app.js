@@ -97,6 +97,7 @@ class AllRecipies {
       })
       .then(() => {
         console.log("Document successfully written!");
+        this.getRecipies();
       })
       .catch((error) => {
         console.error("Error writing document: ", error);
