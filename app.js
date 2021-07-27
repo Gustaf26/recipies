@@ -85,6 +85,22 @@ class AllRecipies {
   submitRecipie = (e, id) => {
     e.preventDefault();
     console.log("Submitting recipie" + id);
+
+    // Add a new document in collection "cities"
+    db.collection("lela")
+      .doc(id)
+      .set({
+        description: document.getElementById(`recipie_description-${id}`).value,
+        ingredients: document.getElementById(`recipie_ingredients-${id}`).value,
+        preparacion: document.getElementById(`recipie_preparacion-${id}`).value,
+        title: document.getElementById(`recipie_title-${id}`).value,
+      })
+      .then(() => {
+        console.log("Document successfully written!");
+      })
+      .catch((error) => {
+        console.error("Error writing document: ", error);
+      });
   };
 
   editRecipie = (e, recipie) => {
