@@ -93,20 +93,12 @@ class AllRecipies {
 
     let recipieData = recipie.data();
 
-    if (
-      (document.getElementById(`non-editing-${recipie.id}`).style.display =
-        "block")
-    ) {
-      document.getElementById(`non-editing-${recipie.id}`).style.display =
-        "none";
-      document.getElementById(`recipie-edition-${recipie.id}`).style.display =
-        "block";
-    } else {
-      document.getElementById(`non-editing-${recipie.id}`).style.display =
-        "block";
-      document.getElementById(`recipie-edition-${recipie.id}`).style.display =
-        "none";
-    }
+    document
+      .getElementById(`non-editing-${recipie.id}`)
+      .toggleAttribute("hidden");
+    document
+      .getElementById(`recipie-edition-${recipie.id}`)
+      .toggleAttribute("hidden");
 
     document.getElementById(`recipie_title-${recipie.id}`).value =
       recipieData.title;
@@ -137,7 +129,7 @@ class AllRecipies {
 						 ${recipie_data.title} 
               <button id="delete-recipie-${doc.id}" class="btn btn-danger btn-sm">Delete</button>
               <button id="edit-recipie-${doc.id}" class="btn btn-primary btn-sm">Edit</button>
-              <div id="non-editing-${doc.id}">
+              <div class="showing" id="non-editing-${doc.id}">
                 <p id="${doc.id}-descripcion">${recipie_data.description}</p>
                 <p id="${doc.id}-ingredientes">Ingredientes: ${recipie_data.ingredients}</p>
                 <a id="prep${i}" href="#">Ver preparación
@@ -148,7 +140,7 @@ class AllRecipies {
                     <p class="card-text">${recipie_data.preparacion}</p>
                 </div>
               </div>
-              <form id="recipie-edition-${doc.id}" style="display: none;">
+              <form id="recipie-edition-${doc.id}" hidden>
                 <div class="form-group mt-3">
                   <div class="tituloautor">
                     <label class="tituloautoritem mr-4" for="recipie_title"

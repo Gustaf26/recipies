@@ -95,6 +95,14 @@ label {
   display: inline-block;
 }
 
+.showing {
+  display: block;
+}
+
+.hidden {
+  display: none;
+}
+
 /*#recipies, #recipiestwo, #recipiesthree {display:none;}*/
 
 footer {
